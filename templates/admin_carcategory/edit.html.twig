@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une categorie{% endblock %}
+
+{% block body %}
+    <h1>Modifier une categorie</h1>
+
+    {{ include('admin_carcategory/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_admin_carcategory_index') }}">Retourner à la liste des categories</a>
+
+    {{ include('admin_carcategory/_delete_form.html.twig') }}
+{% endblock %}

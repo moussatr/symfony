@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}la liste des categories{% endblock %}
+
+{% block body %}
+    <h1>La liste de categories</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+              
+                <th>Nom</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for carcategory in pagination %}
+            <tr>
+                
+                <td>{{ carcategory.name }}</td>
+                <td>
+                    <a href="{{ path('app_admin_carcategory_show', {'id': carcategory.id}) }}">Consulter</a>
+                    <a href="{{ path('app_admin_carcategory_edit', {'id': carcategory.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucune categorie trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_carcategory_new') }}">Créer une nouvelle categorie</a>
+    <div class="pagination">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}

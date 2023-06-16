@@ -1,0 +1,29 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Résultats de recherche</h1>
+
+    {# Afficher le formulaire de recherche #}
+     {% block body %}
+          {{ form_start(form) }}
+            {{ form_row(form.searchTerm) }}
+            {{ form_row(form.category) }}
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+          {{ form_end(form) }}
+      {% endblock %}
+    {# Afficher les résultats de recherche #}
+    {% if pagination is not empty %}
+        <h2>Résultats trouvés :</h2>
+        <ul>
+            {% for car in pagination %}
+                <li>{{ car.name }} </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun résultat trouvé.</p>
+    {% endif %}
+    <div class="pagination">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}

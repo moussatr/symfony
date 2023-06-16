@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LookupController!{% endblock %}
+
+{% block body %}
+   <h1>Resultats de la recherche</h1>
+   <h2 class="my-4" >Nous avons trouvé les voitures suivants pour vous :</h2>
+   
+        {% for car in pagination %}
+            <div>
+                
+                <h3>{{ car.name }}</h3>
+                
+                <div>
+                    <a href="{{ path('app_car_show', {'id': car.id}) }}">Consulter les détails de la voiture</a>
+
+                </div>
+            </div>
+        {% else %}
+            <div>
+                Aucune voiture disponible pour ces critères de recherche
+            </div>
+        {% endfor %}
+        </tbody>
+        <div class="pagination">
+        {{ knp_pagination_render(pagination) }}
+         </div>       
+
+{% endblock %}

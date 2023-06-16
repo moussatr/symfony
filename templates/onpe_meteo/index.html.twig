@@ -1,0 +1,11 @@
+
+
+{% block title %}Hello OnpeMeteoController!{% endblock %}
+
+{% block body %}
+    <h1>Météo à {{ city }}</h1>
+        <p>Température : {{ temperature }}°C</p>
+        <p>Description : {{ description }}</p>
+        <p>Humidité : {{ humidity }}%</p>
+        <p>Vitesse du vent : {{ windSpeed }} m/s</p>
+{% endblock %}

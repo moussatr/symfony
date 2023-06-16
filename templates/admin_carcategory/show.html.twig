@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+    <h1>Categorie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                
+                <td>{{ carcategory.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ carcategory.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_carcategory_index') }}">Retourner à la liste des categories</a>
+
+    <a href="{{ path('app_admin_carcategory_edit', {'id': carcategory.id}) }}">Modifier</a>
+
+    {{ include('admin_carcategory/_delete_form.html.twig') }}
+{% endblock %}

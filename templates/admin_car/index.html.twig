@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste de voiture{% endblock %}
+
+{% block body %}
+    <h1>La liste des voitures</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+               
+               
+                <th>Nom</th>
+              
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for car in pagination %}
+            <tr>
+                
+                
+                <td>{{ car.name }}</td>
+                
+                <td>
+                    <a href="{{ path('app_admin_car_show', {'id': car.id}) }}">Consulter</a>
+                    <a href="{{ path('app_admin_car_edit', {'id': car.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucune voiture trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_car_new') }}">Créer une nouvelle voiture</a>
+    <div class="pagination">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}
